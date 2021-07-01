@@ -55,10 +55,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShopService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IceCreamShop.Data\IceCreamShop.Data.csproj">
+      <Project>{3344789F-F221-4587-828D-1C05B5290237}</Project>
+      <Name>IceCreamShop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IceCreamShop.Models\IceCreamShop.Models.csproj">
+      <Project>{3BB37455-9D53-4ADD-A2F6-320DC3969AFC}</Project>
+      <Name>IceCreamShop.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IceCreamShop.Data
+namespace IceCreamShop.Models.Shop
 {
-    public class Shop
+    public class ShopEdit
     {
         [Key]
         public int ShopId { get; set; }

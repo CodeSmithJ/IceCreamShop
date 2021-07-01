@@ -54,11 +54,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customer\CustomerCreate.cs" />
+    <Compile Include="Customer\CustomerDetails.cs" />
+    <Compile Include="Customer\CustomerEdit.cs" />
+    <Compile Include="Customer\CutomerListItem.cs" />
+    <Compile Include="Flavor\FlavorCreate.cs" />
+    <Compile Include="Flavor\FlavorDetails.cs" />
+    <Compile Include="Flavor\FlavorEdit.cs" />
+    <Compile Include="Flavor\FlavorListItem.cs" />
+    <Compile Include="IceCreamOrder\IceCreamOrderCreate.cs" />
+    <Compile Include="IceCreamOrder\IceCreamOrderDetails.cs" />
+    <Compile Include="IceCreamOrder\IceCreamOrderEdit.cs" />
+    <Compile Include="IceCreamOrder\IceCreamOrderListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shop\ShopDetails.cs" />
+    <Compile Include="Shop\ShopEdit.cs" />
+    <Compile Include="Shop\ShopCreate.cs" />
+    <Compile Include="Shop\ShopListItem.cs" />
+    <Compile Include="Toppings\ToppingsCreate.cs" />
+    <Compile Include="Toppings\ToppingsDetails.cs" />
+    <Compile Include="Toppings\ToppingsEdit.cs" />
+    <Compile Include="Toppings\ToppingsListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
