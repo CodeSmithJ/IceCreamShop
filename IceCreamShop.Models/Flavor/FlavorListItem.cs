@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IceCreamShop.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace IceCreamShop.Models.Flavor
     public class FlavorListItem
     {
         public int FlavorId { get; set; }
+        public ICFlavor ICFlavor { get; set; }
         public double Price { get; set; }
         public string FlavorName { get; set; }
     }

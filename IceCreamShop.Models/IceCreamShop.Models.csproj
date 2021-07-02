@@ -80,6 +80,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\IceCreamShop.Data\IceCreamShop.Data.csproj">
+      <Project>{3344789F-F221-4587-828D-1C05B5290237}</Project>
+      <Name>IceCreamShop.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

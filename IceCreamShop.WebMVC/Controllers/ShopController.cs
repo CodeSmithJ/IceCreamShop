@@ -1,4 +1,5 @@
 ﻿using IceCreamShop.Models;
+using IceCreamShop.Models.Shop;
 using IceCreamShop.Services;
 using Microsoft.AspNet.Identity;
 using System;

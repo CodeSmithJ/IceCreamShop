@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace IceCreamShop.Data
 {
+    public enum ICToppings { Caramel, Fudge, WhippedCream, Cherry }
     public class Toppings
     {
         public int ToppingsId { get; set; }
         public string ToppingsName { get; set; }
         public double Price { get; set; }
+        public ICToppings ICToppings { get; set; }
     }
 }
