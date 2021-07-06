@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IceCreamShop.Models.Toppings
+namespace IceCreamShop.Models.Topping
 {
-    public class ToppingsListItem
+    public class ToppingEdit
     {
         public int ToppingId { get; set; }
         public ICToppings ICToppings { get; set; }

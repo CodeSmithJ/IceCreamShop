@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IceCreamShop.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,7 +27,7 @@ namespace IceCreamShop.WebMVC.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (CreateShopService().CreateShop(model))
+            if (CreateToppingService().CreateTopping(model))
             {
                 TempData["SaveResult"] = "Topping Created";
                 return RedirectToAction("Index");
@@ -36,7 +37,7 @@ namespace IceCreamShop.WebMVC.Controllers
             return View(model);
         }
 
-        private ShopService CreateToppingService()
+        private ToppingService CreateToppingService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new ToppingService(userId);

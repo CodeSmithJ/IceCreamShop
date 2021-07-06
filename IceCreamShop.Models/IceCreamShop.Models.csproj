@@ -71,10 +71,10 @@
     <Compile Include="Shop\ShopEdit.cs" />
     <Compile Include="Shop\ShopCreate.cs" />
     <Compile Include="Shop\ShopListItem.cs" />
-    <Compile Include="Toppings\ToppingsCreate.cs" />
-    <Compile Include="Toppings\ToppingsDetails.cs" />
-    <Compile Include="Toppings\ToppingsEdit.cs" />
-    <Compile Include="Toppings\ToppingsListItem.cs" />
+    <Compile Include="Topping\ToppingCreate.cs" />
+    <Compile Include="Topping\ToppingDetails.cs" />
+    <Compile Include="Topping\ToppingEdit.cs" />
+    <Compile Include="Topping\ToppingListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
