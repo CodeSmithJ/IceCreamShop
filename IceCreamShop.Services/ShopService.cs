@@ -17,6 +17,22 @@ namespace IceCreamShop.Services
             _userId = userId;
         }
 
+        public ShopDetails GetShopDetailsById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Shops
+                    .Single(e => e.ShopId == id && e.OwnerId == _userId);
+                return new ShopDetails
+                {
+                    ShopId = entity.ShopId,
+                    ShopName = entity.ShopName
+                };
+            }
+        }
+
         public bool CreateShop(ShopCreate model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -44,6 +60,32 @@ namespace IceCreamShop.Services
                 });
 
                 return query.ToArray();
+            }
+        }
+
+        public bool UpdateShop(ShopEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var shop = ctx.Shops.Single(m => m.ShopId == model.ShopId);
+
+                shop.ShopId = model.ShopId;
+
+                shop.ShopName = model.ShopName;
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteShop(int shopId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Shops
+                    .Single(e => e.ShopId == shopId && e.OwnerId == _userId);
+                ctx.Shops.Remove(entity);
+                return ctx.SaveChanges() == 1;
             }
         }
     }

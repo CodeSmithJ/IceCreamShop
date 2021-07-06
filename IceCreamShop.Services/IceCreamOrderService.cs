@@ -14,13 +14,12 @@ namespace IceCreamShop.Services
         {
             var entity = new IceCreamOrder()
             {
-                Created = DateTimeOffset.Now,
                 IceCreamOrderId = model.IceCreamOrderId
             };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.IceCreamOrder.Add(entity);
+                ctx.IceCreamOrders.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -32,7 +31,6 @@ namespace IceCreamShop.Services
                 var query = ctx.IceCreamOrders.Select(e => new IceCreamOrderListItem()
                 {
                     IceCreamOrderId = e.IceCreamOrderId,
-                    Created = e.Created,
                 });
                 return query.ToList();
             }
@@ -48,30 +46,27 @@ namespace IceCreamShop.Services
                     new IceCreamOrderDetails()
                     {
                         IceCreamOrderId = entity.IceCreamOrderId,
-                        Created = entity.Created,
-                        Edited = entity.Edited,
 
-                        Customer = entity.Customer.Select(e => new Customer()
+                        CustomerId = entity.CustomerId.Select(e => new Customer()
                         {
                             IceCreamOrderId = entity.IceCreamOrderId,
-                            CustomerTag = e.CustomerTag,
+                            CustomerGuid = e.CustomerGuid,
                             CustomerId = e.CustomerId,
-                            FirstName = e.FirstName,
-                            LastName = e.LastName,
-                            PaymentType = e.PaymentType,
+                            CustomerName = e.CustomerName,
+                            Payment = e.Payment,
                         }).ToList(),
 
 
-                        Topping = entity.Topping.Select(e => new Topping()
+                        ToppingsId = entity.ToppingsId.Select(e => new Topping()
                         {
                             IceCreamOrderId = entity.IceCreamOrderId,
-                            ToppingId = e.ToppingId,
+                            ToppingsId = e.ToppingsId,
                             ToppingName = e.ToppingName,
                             Price = e.Price,
 
                         }).ToList(),
 
-                        Flavor = entity.Flavor.Select(e => new Flavor()
+                        FlavorId = entity.FlavorId.Select(e => new Flavor()
                         {
                             IceCreamOrderId = entity.IceCreamOrderId,
                             FlavorName = e.FlavorName,
@@ -90,8 +85,6 @@ namespace IceCreamShop.Services
                     ctx
                         .IceCreamOrders
                         .Single(e => e.IceCreamOrderId == model.IceCreamOrderId);
-
-                entity.Edited = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
             }

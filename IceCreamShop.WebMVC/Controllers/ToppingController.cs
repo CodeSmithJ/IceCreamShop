@@ -1,4 +1,6 @@
-﻿using IceCreamShop.Services;
+﻿using IceCreamShop.Models.Topping;
+using IceCreamShop.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,9 +42,8 @@ namespace IceCreamShop.WebMVC.Controllers
         private ToppingService CreateToppingService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new ToppingService(userId);
+            var service = new ToppingService();
             return service;
         }
     }
-}
 }

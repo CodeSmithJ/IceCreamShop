@@ -15,7 +15,10 @@ namespace IceCreamShop.WebMVC.Controllers
         // GET: Shop
         public ActionResult Index()
         {
-            return View(CreateShopService().GetShops());
+            var service = CreateShopService();
+            var model = service.GetShops();
+
+            return View(model);
         }
 
         public ActionResult Create()
@@ -30,14 +33,64 @@ namespace IceCreamShop.WebMVC.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (CreateShopService().CreateShop(model))
+            var service = CreateShopService();
+
+            if (service.CreateShop(model))
             {
-                TempData["SaveResult"] = "Shop Established";
+                TempData["SaveResult"] = "Your Shop was Created.";
+                return RedirectToAction("Index");
+            };
+
+            ModelState.AddModelError("", "Shop could not be created.");
+            return View(model);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var shop = CreateShopService().GetShopDetailsById(id);
+            return View(shop);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var shop = CreateShopService().GetShopDetailsById(id);
+            return View(new ShopEdit
+            {
+                ShopId = shop.ShopId,
+                ShopName = shop.ShopName
+            });
+        }
+
+        [HttpPut]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, ShopEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.ShopId != id)
+            {
+                ModelState.AddModelError("", "Id mismatch");
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Error making a shop");
+            if (CreateShopService().UpdateShop(model))
+            {
+                TempData["SaveResult"] = "Shop Updated";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Error Updating a shop");
             return View(model);
+        }
+
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            var service = CreateShopService();
+            service.DeleteShop(id);
+            TempData["SaveResult"] = "Your Shop Is Deleted";
+
+            return RedirectToAction("Index");
         }
 
         private ShopService CreateShopService()
