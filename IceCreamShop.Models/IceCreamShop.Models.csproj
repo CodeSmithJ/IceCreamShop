@@ -57,7 +57,7 @@
     <Compile Include="Customer\CustomerCreate.cs" />
     <Compile Include="Customer\CustomerDetails.cs" />
     <Compile Include="Customer\CustomerEdit.cs" />
-    <Compile Include="Customer\CutomerListItem.cs" />
+    <Compile Include="Customer\CustomerListItem.cs" />
     <Compile Include="Flavor\FlavorCreate.cs" />
     <Compile Include="Flavor\FlavorDetails.cs" />
     <Compile Include="Flavor\FlavorEdit.cs" />

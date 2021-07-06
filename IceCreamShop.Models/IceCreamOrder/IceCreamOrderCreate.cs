@@ -10,7 +10,7 @@ namespace IceCreamShop.Models.IceCreamOrder
     {
         public int IceCreamOrderId { get; set; }
         public int FlavorId { get; set; }
-        public int ToppingsId { get; set; }
+        public int ToppingId { get; set; }
         public int CustomerId { get; set; }
     }
 }

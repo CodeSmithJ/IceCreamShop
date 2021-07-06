@@ -1,4 +1,5 @@
 ﻿using IceCreamShop.Data;
+using IceCreamShop.Models.Customer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,7 @@ namespace IceCreamShop.Services
                 {
                     CustomerGuid = _userId,
                     CustomerName = model.CustomerName,
-                    Payment = model.Payment,
-                    IceCreamOrderId = model.IceCreamOrderId
+                    Payment = model.Payment
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -33,7 +33,7 @@ namespace IceCreamShop.Services
             }
         }
 
-        public IEnumerable<CustomerList> GetCustomer()
+        public IEnumerable<CustomerListItem> GetCustomer()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -42,7 +42,7 @@ namespace IceCreamShop.Services
                     .Customers
                     .Select(
                         e =>
-                        new CustomerList
+                        new CustomerListItem
                         {
                             CustomerId = e.CustomerId,
                             CustomerName = e.CustomerName,
@@ -66,8 +66,6 @@ namespace IceCreamShop.Services
                     CustomerId = entity.CustomerId,
                     CustomerName = entity.CustomerName,
                     Payment = entity.Payment,
-
-
                 };
             }
         }
@@ -78,9 +76,9 @@ namespace IceCreamShop.Services
             {
                 var entity = ctx
                     .Customers
-                    .Single(e => e.CustomerTag == _userId);
+                    .Single(e => e.CustomerGuid == _userId);
 
-                entity.CustomerName = model.CustomerName,
+                entity.CustomerName = model.CustomerName;
                 entity.Payment = model.Payment;
 
                 return ctx.SaveChanges() == 1;

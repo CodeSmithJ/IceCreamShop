@@ -55,8 +55,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerService.cs" />
+    <Compile Include="FlavorService.cs" />
+    <Compile Include="IceCreamOrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopService.cs" />
+    <Compile Include="ToppingService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

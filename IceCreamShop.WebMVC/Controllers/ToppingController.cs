@@ -1,6 +1,4 @@
-﻿using IceCreamShop.Models.Flavor;
-using Microsoft.AspNet.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,41 +6,42 @@ using System.Web.Mvc;
 
 namespace IceCreamShop.WebMVC.Controllers
 {
-    public class FlavorController : Controller
+    public class ToppingController : Controller
     {
-        // GET: Flavor
+        // GET: Topping
         public ActionResult Index()
         {
-            return View(CreateFlavorService().GetFlavors());
+            return View(CreateToppingService().GetToppings());
         }
 
         public ActionResult Create()
         {
-            ViewBag.Title = "New Flavor";
+            ViewBag.Title = "New Topping";
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(FlavorCreate model)
+        public ActionResult Create(ToppingCreate model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (CreateFlavorService().CreateFlavor(model))
+            if (CreateShopService().CreateShop(model))
             {
-                TempData["SaveResult"] = "Flavor Created";
+                TempData["SaveResult"] = "Topping Created";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Error Adding Flavor");
+            ModelState.AddModelError("", "Topping Create Error");
             return View(model);
         }
 
-        private FlavorService CreateFlavorService()
+        private ShopService CreateToppingService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new FlavorService(userId);
+            var service = new ToppingService(userId);
             return service;
         }
     }
+}
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IceCreamShop.Models.Customer
+namespace IceCreamShop.Services
 {
-    public class CutomerListItem
+    public class FlavorService
     {
     }
 }

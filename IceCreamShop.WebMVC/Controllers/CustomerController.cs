@@ -1,4 +1,7 @@
-﻿using System;
+﻿using IceCreamShop.Models.Customer;
+using IceCreamShop.Services;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +14,36 @@ namespace IceCreamShop.WebMVC.Controllers
         // GET: Customer
         public ActionResult Index()
         {
+            return View(CreateCustomerService().GetCustomers());
+        }
+
+        public ActionResult Create()
+        {
+            ViewBag.Title = "New Customer";
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CustomerCreate model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (CreateCustomerService().CreateCustomer(model))
+            {
+                TempData["SaveResult"] = "Customer Created";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Error Adding Customer");
+            return View(model);
+        }
+
+        private CustomerService CreateCustomerService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new CustomerService(userId);
+            return service;
         }
     }
 }

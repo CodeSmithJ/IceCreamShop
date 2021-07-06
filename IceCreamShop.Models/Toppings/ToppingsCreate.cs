@@ -9,9 +9,9 @@ namespace IceCreamShop.Models.Toppings
 {
     public class ToppingsCreate
     {
-        public int ToppingsId { get; set; }
+        public int ToppingId { get; set; }
         public ICToppings ICToppings { get; set; }
-        public string ToppingsName { get; set; }
+        public string ToppingName { get; set; }
         public double Price { get; set; }
     }
 }
