@@ -1,5 +1,6 @@
 ﻿using IceCreamShop.Data;
 using IceCreamShop.Models;
+using IceCreamShop.Models.Shop;
 using System;
 using System.Collections.Generic;
 using System.Linq;

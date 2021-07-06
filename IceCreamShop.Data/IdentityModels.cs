@@ -33,6 +33,11 @@ namespace IceCreamShop.Data
         }
 
         public DbSet<Shop> Shops { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Flavor> Flavors { get; set; }
+        public DbSet<Topping> Toppings { get; set; }
+        public DbSet<IceCreamOrder> IceCreamOrders { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
