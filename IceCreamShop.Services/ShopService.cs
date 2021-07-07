@@ -17,7 +17,7 @@ namespace IceCreamShop.Services
             _userId = userId;
         }
 
-        public ShopDetails GetShopDetailsById(int id)
+        public ShopDetails GetShopById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {

@@ -14,7 +14,7 @@ namespace IceCreamShop.WebMVC.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            return View(CreateCustomerService().GetCustomers());
+            return View(CreateCustomerService().GetCustomer());
         }
 
         public ActionResult Create()

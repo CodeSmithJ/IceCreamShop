@@ -47,32 +47,32 @@ namespace IceCreamShop.Services
                     {
                         IceCreamOrderId = entity.IceCreamOrderId,
 
-                        CustomerId = entity.CustomerId.Select(e => new Customer()
-                        {
-                            IceCreamOrderId = entity.IceCreamOrderId,
-                            CustomerGuid = e.CustomerGuid,
-                            CustomerId = e.CustomerId,
-                            CustomerName = e.CustomerName,
-                            Payment = e.Payment,
-                        }).ToList(),
+                       // Customer = entity.Customer.Select(e => new Customer()
+                    //    {
+                    //        IceCreamOrderId = entity.IceCreamOrderId,
+                    //        CustomerId = e.CustomerId,
+                    //        CustomerGuid = e.CustomerGuid,
+                    //        CustomerName = e.CustomerName,
+                    //        Payment = e.Payment,
+                    //    }).ToList(),
 
 
-                        ToppingsId = entity.ToppingsId.Select(e => new Topping()
-                        {
-                            IceCreamOrderId = entity.IceCreamOrderId,
-                            ToppingsId = e.ToppingsId,
-                            ToppingName = e.ToppingName,
-                            Price = e.Price,
+                    //    Toppings = entity.Toppings.Select(e => new Topping()
+                    //    {
+                    //        IceCreamOrderId = entity.IceCreamOrderId,
+                    //        ToppingsId = e.ToppingsId,
+                    //        ToppingName = e.ToppingName,
+                    //        Price = e.Price,
 
-                        }).ToList(),
+                    //    }).ToList(),
 
-                        FlavorId = entity.FlavorId.Select(e => new Flavor()
-                        {
-                            IceCreamOrderId = entity.IceCreamOrderId,
-                            FlavorName = e.FlavorName,
-                            FlavorId = e.FlavorId,
-                            Price = e.Price
-                        }).ToList()
+                    //    Flavor = entity.Flavor.Select(e => new Flavor()
+                    //    {
+                    //        IceCreamOrderId = entity.IceCreamOrderId,
+                    //        FlavorName = e.FlavorName,
+                    //        FlavorId = e.FlavorId,
+                    //        Price = e.Price
+                    //    }).ToList()
                     };
             }
         }

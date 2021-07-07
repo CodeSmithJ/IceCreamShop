@@ -3,10 +3,43 @@ namespace IceCreamShop.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class redo : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Customer",
+                c => new
+                    {
+                        CustomerId = c.Int(nullable: false, identity: true),
+                        CustomerGuid = c.Guid(nullable: false),
+                        CustomerName = c.String(),
+                        Payment = c.String(),
+                    })
+                .PrimaryKey(t => t.CustomerId);
+            
+            CreateTable(
+                "dbo.Flavor",
+                c => new
+                    {
+                        FlavorId = c.Int(nullable: false, identity: true),
+                        ICFlavor = c.Int(nullable: false),
+                        Price = c.Double(nullable: false),
+                        FlavorName = c.String(),
+                    })
+                .PrimaryKey(t => t.FlavorId);
+            
+            CreateTable(
+                "dbo.IceCreamOrder",
+                c => new
+                    {
+                        IceCreamOrderId = c.Int(nullable: false, identity: true),
+                        FlavorId = c.Int(nullable: false),
+                        ToppingsId = c.Int(nullable: false),
+                        CustomerId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.IceCreamOrderId);
+            
             CreateTable(
                 "dbo.IdentityRole",
                 c => new
@@ -37,13 +70,24 @@ namespace IceCreamShop.Data.Migrations
                     {
                         ShopId = c.Int(nullable: false, identity: true),
                         OwnerId = c.Guid(nullable: false),
-                        IceCreamOrderId = c.String(nullable: false),
+                        IceCreamOrderId = c.String(),
                         TotalPrice = c.Double(nullable: false),
-                        FullName = c.String(nullable: false),
+                        ShopName = c.String(),
                         CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
                         ModifiedUtc = c.DateTimeOffset(precision: 7),
                     })
                 .PrimaryKey(t => t.ShopId);
+            
+            CreateTable(
+                "dbo.Topping",
+                c => new
+                    {
+                        ToppingId = c.Int(nullable: false, identity: true),
+                        ToppingName = c.String(),
+                        Price = c.Double(nullable: false),
+                        ICToppings = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ToppingId);
             
             CreateTable(
                 "dbo.ApplicationUser",
@@ -106,9 +150,13 @@ namespace IceCreamShop.Data.Migrations
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
+            DropTable("dbo.Topping");
             DropTable("dbo.Shop");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
+            DropTable("dbo.IceCreamOrder");
+            DropTable("dbo.Flavor");
+            DropTable("dbo.Customer");
         }
     }
 }

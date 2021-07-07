@@ -42,7 +42,7 @@ namespace IceCreamShop.WebMVC.Controllers
         private FlavorService CreateFlavorService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new FlavorService(userId);
+            var service = new FlavorService();
             return service;
         }
     }

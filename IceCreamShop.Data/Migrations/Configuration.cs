@@ -10,7 +10,6 @@ namespace IceCreamShop.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "IceCreamShop.Data.ApplicationDbContext";
         }
 
         protected override void Seed(IceCreamShop.Data.ApplicationDbContext context)

@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace IceCreamShop.WebMVC.Controllers
 {
+    [Authorize]
     public class ShopController : Controller
     {
         // GET: Shop
@@ -47,13 +48,13 @@ namespace IceCreamShop.WebMVC.Controllers
 
         public ActionResult Details(int id)
         {
-            var shop = CreateShopService().GetShopDetailsById(id);
+            var shop = CreateShopService().GetShopById(id);
             return View(shop);
         }
 
         public ActionResult Edit(int id)
         {
-            var shop = CreateShopService().GetShopDetailsById(id);
+            var shop = CreateShopService().GetShopById(id);
             return View(new ShopEdit
             {
                 ShopId = shop.ShopId,
@@ -83,7 +84,9 @@ namespace IceCreamShop.WebMVC.Controllers
             return View(model);
         }
 
-        [HttpDelete]
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             var service = CreateShopService();

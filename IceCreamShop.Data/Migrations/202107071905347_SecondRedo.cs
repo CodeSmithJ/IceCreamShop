@@ -3,7 +3,7 @@ namespace IceCreamShop.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class FirstMigration : DbMigration
+    public partial class SecondRedo : DbMigration
     {
         public override void Up()
         {

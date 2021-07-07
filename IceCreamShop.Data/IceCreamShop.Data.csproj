@@ -58,21 +58,13 @@
     <Compile Include="Flavor.cs" />
     <Compile Include="IceCreamOrder.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202106291747545_InitialCreate.cs" />
-    <Compile Include="Migrations\202106291747545_InitialCreate.Designer.cs">
-      <DependentUpon>202106291747545_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202107071633189_redo.cs" />
+    <Compile Include="Migrations\202107071633189_redo.Designer.cs">
+      <DependentUpon>202107071633189_redo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202106291756345_First Migration.cs" />
-    <Compile Include="Migrations\202106291756345_First Migration.Designer.cs">
-      <DependentUpon>202106291756345_First Migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106301932208_SecondMigration.cs" />
-    <Compile Include="Migrations\202106301932208_SecondMigration.Designer.cs">
-      <DependentUpon>202106301932208_SecondMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107061212114_TestMigration.cs" />
-    <Compile Include="Migrations\202107061212114_TestMigration.Designer.cs">
-      <DependentUpon>202107061212114_TestMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202107071905347_SecondRedo.cs" />
+    <Compile Include="Migrations\202107071905347_SecondRedo.Designer.cs">
+      <DependentUpon>202107071905347_SecondRedo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,17 +76,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202106291747545_InitialCreate.resx">
-      <DependentUpon>202106291747545_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107071633189_redo.resx">
+      <DependentUpon>202107071633189_redo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106291756345_First Migration.resx">
-      <DependentUpon>202106291756345_First Migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106301932208_SecondMigration.resx">
-      <DependentUpon>202106301932208_SecondMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107061212114_TestMigration.resx">
-      <DependentUpon>202107061212114_TestMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107071905347_SecondRedo.resx">
+      <DependentUpon>202107071905347_SecondRedo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
