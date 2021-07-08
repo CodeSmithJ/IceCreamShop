@@ -245,13 +245,21 @@
     <Content Include="Views\Shop\Details.cshtml" />
     <Content Include="Views\Shop\Edit.cshtml" />
     <Content Include="Views\Shop\Delete.cshtml" />
+    <Content Include="Views\Topping\Index.cshtml" />
+    <Content Include="Views\Topping\Create.cshtml" />
+    <Content Include="Views\Topping\Details.cshtml" />
+    <Content Include="Views\Topping\Delete.cshtml" />
+    <Content Include="Views\Topping\Edit.cshtml" />
+    <Content Include="Views\Flavor\Index.cshtml" />
+    <Content Include="Views\Flavor\Create.cshtml" />
+    <Content Include="Views\Flavor\Details.cshtml" />
+    <Content Include="Views\Flavor\Edit.cshtml" />
+    <Content Include="Views\Flavor\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Customer\" />
-    <Folder Include="Views\Flavor\" />
     <Folder Include="Views\IceCreamOrder\" />
-    <Folder Include="Views\Toppings\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

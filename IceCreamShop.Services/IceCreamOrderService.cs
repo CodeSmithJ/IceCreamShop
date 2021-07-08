@@ -35,7 +35,17 @@ namespace IceCreamShop.Services
                 return query.ToList();
             }
         }
-
+        public IEnumerable<IceCreamOrderListItem> GetIceCreamOrders(int shopId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.IceCreamOrders.Select(e => new IceCreamOrderListItem()
+                {
+                    IceCreamOrderId = e.IceCreamOrderId,
+                });
+                return query.ToList();
+            }
+        }
         public IceCreamOrderDetails GetIceCreamOrderById(int id)
         {
             using (var ctx = new ApplicationDbContext())

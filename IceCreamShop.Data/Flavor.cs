@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IceCreamShop.Data
 {
-    public enum ICFlavor { Vanilla, Chocolate, Strawberry, CookiesAndCream }
+    public enum ICFlavor { Vanilla=1, Chocolate, Strawberry, CookiesAndCream }
     public class Flavor
     {
         public int FlavorId { get; set; }

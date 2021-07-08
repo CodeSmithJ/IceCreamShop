@@ -13,16 +13,18 @@ namespace IceCreamShop.Data
         [Key]
         public int IceCreamOrderId { get; set; }
 
+        [ForeignKey(nameof(Flavor))]
         public int FlavorId { get; set; }
-        [ForeignKey("FlavorId")]
+        public virtual Flavor Flavor { get; set; }
         public virtual ICFlavor ICFlavor { get; set; }
 
+        [ForeignKey(nameof(Topping))]
         public int ToppingsId { get; set; }
-        [ForeignKey("ToppingId")]
+        public virtual Topping Topping { get; set; }
         public virtual ICTopping ICTopping { get; set; }
 
+        [ForeignKey(nameof(Customer))]
         public int CustomerId { get; set; }
-        [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
     }
 }

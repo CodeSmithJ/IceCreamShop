@@ -1,0 +1,42 @@
+﻿@model IceCreamShop.Models.Topping.ToppingDetails
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<div>
+    <h4>ToppingDetails</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ToppingId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToppingId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ToppingName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToppingName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ToppingId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

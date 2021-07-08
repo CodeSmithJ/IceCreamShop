@@ -56,7 +56,9 @@ namespace IceCreamShop.WebMVC.Controllers
             var flavor = CreateFlavorService().GetFlavorById(id);
             return View(new FlavorEdit
             {
-                // Need Order Here
+                FlavorId = flavor.FlavorId,
+                FlavorName = flavor.FlavorName,
+                Price = flavor.Price
             });
         }
 
@@ -94,10 +96,10 @@ namespace IceCreamShop.WebMVC.Controllers
             return RedirectToAction("Index");
         }
 
-        private CustomerService CreateFlavorService()
+        private FlavorService CreateFlavorService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new FlavorService();
+            var service = new FlavorService(userId);
             return service;
         }
     }

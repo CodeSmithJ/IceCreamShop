@@ -57,7 +57,8 @@ namespace IceCreamShop.WebMVC.Controllers
             return View(new ToppingEdit
             {
                 ToppingId = topping.ToppingId,
-                ToppingName = topping.ToppingName
+                ToppingName = topping.ToppingName,
+                Price = topping.Price
             });
         }
 

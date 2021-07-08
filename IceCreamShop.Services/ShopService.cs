@@ -28,7 +28,11 @@ namespace IceCreamShop.Services
                 return new ShopDetails
                 {
                     ShopId = entity.ShopId,
-                    ShopName = entity.ShopName
+                    ShopName = entity.ShopName,
+
+                    CreatedUtc = entity.CreatedUtc,
+                    ModifiedUtc=entity.ModifiedUtc,
+                    TotalPrice =entity.TotalPrice
                 };
             }
         }
@@ -41,12 +45,10 @@ namespace IceCreamShop.Services
                 {
                     OwnerId = _userId,
                     ShopName = model.ShopName,
-                    
-                };
-
+                    CreatedUtc = DateTime.Now
+            };
                 ctx.Shops.Add(newShop);
                 return ctx.SaveChanges() == 1;
-
             }
 
         }
@@ -59,8 +61,8 @@ namespace IceCreamShop.Services
                 {
                     ShopId = s.ShopId,
                     ShopName = s.ShopName,
+                    CreatedUtc = s.CreatedUtc
                 });
-
                 return query.ToArray();
             }
         }
@@ -73,6 +75,7 @@ namespace IceCreamShop.Services
 
                 shop.ShopId = model.ShopId;
                 shop.ShopName = model.ShopName;
+                shop.ModifiedUtc = DateTime.Now;
                 return ctx.SaveChanges() == 1;
             }
         }

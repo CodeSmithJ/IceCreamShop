@@ -52,17 +52,32 @@ namespace IceCreamShop.WebMVC.Controllers
             return View(shop);
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id = 0)
         {
+            if (id == 0)
+            {
+                return Content("<h1>ID missing </h1>");
+            }
+
             var shop = CreateShopService().GetShopById(id);
+            // Customers
+            // Toppings
+            // Flavor
+            var dateTime = shop.CreatedUtc;
+            //return View(shop);
+            // ViewBag['orders'] = Services.getOrders(id);
             return View(new ShopEdit
             {
                 ShopId = shop.ShopId,
-                ShopName = shop.ShopName
+                ShopName = shop.ShopName,
+                CreatedUtc = shop.CreatedUtc,
+                ModifiedUtc = shop.ModifiedUtc,
+                TotalPrice = shop.TotalPrice
             });
+
         }
 
-        [HttpPut]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, ShopEdit model)
         {

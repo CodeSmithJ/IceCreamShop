@@ -10,6 +10,11 @@ namespace IceCreamShop.Services
 {
     public class FlavorService
     {
+        private readonly Guid _userId;
+        public FlavorService(Guid userId)
+        {
+            _userId = userId;
+        }
         public bool CreateFlavor(FlavorCreate create)
         {
             var entity =
