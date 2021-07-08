@@ -66,6 +66,10 @@
     <Compile Include="Migrations\202107071905347_SecondRedo.Designer.cs">
       <DependentUpon>202107071905347_SecondRedo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107072153362_Third Redo.cs" />
+    <Compile Include="Migrations\202107072153362_Third Redo.Designer.cs">
+      <DependentUpon>202107072153362_Third Redo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shop.cs" />
@@ -81,6 +85,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107071905347_SecondRedo.resx">
       <DependentUpon>202107071905347_SecondRedo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107072153362_Third Redo.resx">
+      <DependentUpon>202107072153362_Third Redo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

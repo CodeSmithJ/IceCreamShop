@@ -11,5 +11,6 @@ namespace IceCreamShop.Models.Shop
     {
         [MaxLength(25)]
         public string ShopName { get; set; }
+        public Guid OwnerId { get; set; }
     }
 }

@@ -13,5 +13,7 @@ namespace IceCreamShop.Models.Shop
         public string ShopName { get; set; }
         [Display(Name="Created")]
         public DateTimeOffset CreatedUtc { get; set; }
+        public Guid OwnerId { get; set; }
+
     }
 }

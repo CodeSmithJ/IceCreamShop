@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IceCreamShop.Data
 {
-    public enum ICToppings { Caramel, Fudge, WhippedCream, Cherry }
+    public enum ICToppings { Caramel, HotFudge, WhippedCream, Cherry }
     public class Topping
     {
         public int ToppingId { get; set; }
