@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace IceCreamShop.WebMVC.Controllers
 {
+    [Authorize]
     public class ToppingController : Controller
     {
         // GET: Shop

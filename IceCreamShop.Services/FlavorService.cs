@@ -26,7 +26,7 @@ namespace IceCreamShop.Services
             }
         }
 
-        public IEnumerable<FlavorListItem> GetFlavors()
+        public IEnumerable<FlavorListItem> GetFlavor()
         {
             using (var ctx = new ApplicationDbContext())
             {

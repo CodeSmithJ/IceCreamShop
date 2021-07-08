@@ -9,12 +9,16 @@ using System.Web.Mvc;
 
 namespace IceCreamShop.WebMVC.Controllers
 {
+    [Authorize]
     public class FlavorController : Controller
     {
         // GET: Flavor
         public ActionResult Index()
         {
-            return View(CreateFlavorService().GetFlavors());
+            var service = CreateFlavorService();
+            var model = service.GetFlavor();
+
+            return View(model);
         }
 
         public ActionResult Create()
@@ -29,17 +33,68 @@ namespace IceCreamShop.WebMVC.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (CreateFlavorService().CreateFlavor(model))
-            {
-                TempData["SaveResult"] = "Flavor Created";
-                return RedirectToAction("Index");
-            }
+            var service = CreateFlavorService();
 
-            ModelState.AddModelError("", "Error Adding Flavor");
+            if (service.CreateFlavor(model))
+            {
+                TempData["SaveResult"] = "Your Flavor was Created.";
+                return RedirectToAction("Index");
+            };
+
+            ModelState.AddModelError("", "Flavor could not be created.");
             return View(model);
         }
 
-        private FlavorService CreateFlavorService()
+        public ActionResult Details(int id)
+        {
+            var flavor = CreateFlavorService().GetFlavorById(id);
+            return View(flavor);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var flavor = CreateFlavorService().GetFlavorById(id);
+            return View(new FlavorEdit
+            {
+                // Need Order Here
+            });
+        }
+
+        [HttpPut]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, FlavorEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.FlavorId != id)
+            {
+                ModelState.AddModelError("", "Id mismatch");
+                return RedirectToAction("Index");
+            }
+
+            if (CreateFlavorService().UpdateFlavor(model))
+            {
+                TempData["SaveResult"] = "Flavor Updated";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Error Updating Flavor");
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            var service = CreateFlavorService();
+            service.DeleteFlavor(id);
+            TempData["SaveResult"] = "Your Flavor Is Deleted";
+
+            return RedirectToAction("Index");
+        }
+
+        private CustomerService CreateFlavorService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new FlavorService();
