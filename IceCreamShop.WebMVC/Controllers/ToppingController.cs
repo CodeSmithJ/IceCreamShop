@@ -85,10 +85,10 @@ namespace IceCreamShop.WebMVC.Controllers
         }
 
         [HttpDelete]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int toppingId)
         {
             var service = CreateToppingService();
-            service.DeleteTopping(id);
+            service.DeleteTopping(toppingId);
             TempData["SaveResult"] = "Your Topping Is Deleted";
 
             return RedirectToAction("Index");

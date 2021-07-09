@@ -53,10 +53,12 @@ namespace IceCreamShop.WebMVC.Controllers
 
         public ActionResult Edit(int id)
         {
-            var order = CreateCustomerService().GetCustomerById(id);
+            var customer = CreateCustomerService().GetCustomerById(id);
             return View(new CustomerEdit
             {
-                // Need Order Here
+                CustomerId = customer.CustomerId,
+                CustomerName = customer.CustomerName,
+                Payment = customer.Payment
             });
         }
 

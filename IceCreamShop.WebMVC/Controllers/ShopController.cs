@@ -62,9 +62,9 @@ namespace IceCreamShop.WebMVC.Controllers
             var shop = CreateShopService().GetShopById(id);
             // Customers
             // Toppings
-            // Flavor
+            // Flavors
             var dateTime = shop.CreatedUtc;
-            //return View(shop);
+            // return View(shop);
             // ViewBag['orders'] = Services.getOrders(id);
             return View(new ShopEdit
             {
