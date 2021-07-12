@@ -7,13 +7,13 @@ namespace IceCreamShop.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class redo : IMigrationMetadata
+    public sealed partial class WorkingMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(redo));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(WorkingMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202107071633189_redo"; }
+            get { return "202107121233581_WorkingMigration"; }
         }
         
         string IMigrationMetadata.Source

@@ -58,23 +58,16 @@
     <Compile Include="Flavor.cs" />
     <Compile Include="IceCreamOrder.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202107071633189_redo.cs" />
-    <Compile Include="Migrations\202107071633189_redo.Designer.cs">
-      <DependentUpon>202107071633189_redo.cs</DependentUpon>
+    <Compile Include="Migrations\202107101545019_InitialMigration.cs" />
+    <Compile Include="Migrations\202107101545019_InitialMigration.Designer.cs">
+      <DependentUpon>202107101545019_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202107071905347_SecondRedo.cs" />
-    <Compile Include="Migrations\202107071905347_SecondRedo.Designer.cs">
-      <DependentUpon>202107071905347_SecondRedo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107072153362_Third Redo.cs" />
-    <Compile Include="Migrations\202107072153362_Third Redo.Designer.cs">
-      <DependentUpon>202107072153362_Third Redo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107081340472_FourthRedo.cs" />
-    <Compile Include="Migrations\202107081340472_FourthRedo.Designer.cs">
-      <DependentUpon>202107081340472_FourthRedo.cs</DependentUpon>
+    <Compile Include="Migrations\202107121233581_WorkingMigration.cs" />
+    <Compile Include="Migrations\202107121233581_WorkingMigration.Designer.cs">
+      <DependentUpon>202107121233581_WorkingMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="OrderView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shop.cs" />
     <Compile Include="Topping.cs" />
@@ -84,17 +77,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202107071633189_redo.resx">
-      <DependentUpon>202107071633189_redo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107101545019_InitialMigration.resx">
+      <DependentUpon>202107101545019_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107071905347_SecondRedo.resx">
-      <DependentUpon>202107071905347_SecondRedo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107072153362_Third Redo.resx">
-      <DependentUpon>202107072153362_Third Redo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107081340472_FourthRedo.resx">
-      <DependentUpon>202107081340472_FourthRedo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107121233581_WorkingMigration.resx">
+      <DependentUpon>202107121233581_WorkingMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

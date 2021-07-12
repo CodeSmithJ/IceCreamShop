@@ -10,19 +10,20 @@ namespace IceCreamShop.WebMVC.Controllers
     {
         public ActionResult Index()
         {
+           // return Redirect("/IceCreamOrder");
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Welcome To JJ-Scoops!";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "JJ-Scoops Is Here To Help";
 
             return View();
         }

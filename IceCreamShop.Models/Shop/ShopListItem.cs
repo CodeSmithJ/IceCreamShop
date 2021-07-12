@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IceCreamShop.Models.Shop
 {
-    public class ShopListItem
+    public class ShopListItem // OrderViewListItem
     {
         public int ShopId { get; set; }
         public string ShopName { get; set; }

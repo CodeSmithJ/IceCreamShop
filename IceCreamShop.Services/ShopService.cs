@@ -1,5 +1,6 @@
 ﻿using IceCreamShop.Data;
 using IceCreamShop.Models;
+
 using IceCreamShop.Models.Shop;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace IceCreamShop.Services
                 var entity =
                     ctx
                     .Shops
-                    .Single(e => e.ShopId == id/* && e.OwnerId == _userId*/);
+                    .Single(e => e.ShopId == id);
                 return new ShopDetails
                 {
                     ShopId = entity.ShopId,
@@ -66,7 +67,26 @@ namespace IceCreamShop.Services
                 return query.ToArray();
             }
         }
-
+        public IEnumerable<IceCreamShop.Models.OrderView.OrderView> GetOrders()
+        {
+            var shop = 1;
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.OrderViews.Select(s => new IceCreamShop.Models.OrderView.OrderView
+                {
+                    IceCreamOrderId = s.IceCreamOrderId,
+                    CustomerId = s.CustomerId,
+                    FlavorName = s.FlavorName,
+                    FlavorPrice = s.FlavorPrice,
+                    ToppingName = s.ToppingName,
+                    ToppingPrice = s.ToppingPrice,
+                    Price = s.Price,
+                    CustomerName = s.CustomerName,
+                    Payment = s.Payment
+                });
+                return query.ToArray();
+            }
+        }
         public bool UpdateShop(ShopEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -82,14 +102,20 @@ namespace IceCreamShop.Services
 
         public bool DeleteShop(int id)
         {
-            using (var ctx = new ApplicationDbContext())
+            try
             {
-                var entity =
-                    ctx
-                    .Shops
-                    .Single(e => e.ShopId == id && e.OwnerId == _userId);
-                ctx.Shops.Remove(entity);
-                return ctx.SaveChanges() == 1;
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var entity =
+                        ctx
+                        .Shops
+                        .Single(e => e.ShopId == id);
+                    ctx.Shops.Remove(entity);
+                    return ctx.SaveChanges() == 1;
+                }
+            }catch (Exception e)
+            {
+                return false;
             }
         }
     }

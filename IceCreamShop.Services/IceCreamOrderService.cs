@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace IceCreamShop.Services
 {
     public class IceCreamOrderService
@@ -14,7 +15,9 @@ namespace IceCreamShop.Services
         {
             var entity = new IceCreamOrder()
             {
-                IceCreamOrderId = model.IceCreamOrderId
+                FlavorId = model.FlavorId,
+                ToppingsId = model.ToppingId,
+                CustomerId = model.CustomerId
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -23,7 +26,65 @@ namespace IceCreamShop.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        public IEnumerable<SelectList> GetFlavors()
+        {
 
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Flavors
+                    .Select(
+                        e =>
+                        new SelectList
+                        {
+                            Value = e.FlavorId,
+                            Text = e.FlavorName + "(" + e.Price + ")"
+
+                        }); ;
+                return query.ToArray();
+
+            }
+
+        }
+        public IEnumerable<SelectList> GetToppings()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Toppings
+                    .Select(
+                        e =>
+                        new SelectList
+                        {
+                            Value = e.ToppingId,
+                            Text = e.ToppingName + "(" + e.Price + ")"
+                           
+                        });
+                return query.ToArray();
+
+            }
+        }
+        public IEnumerable<SelectList> GetToppings_v1()
+        {
+            List<SelectList> items = new List<SelectList>();
+
+            SelectList item = new SelectList()
+            {
+                Text = "Hot Chocolate",
+                Value = 1
+            };
+
+            items.Add(item);
+            item = new SelectList()
+            {
+                Text = "Cherry",
+                Value = 2
+            };
+            items.Add(item);
+            return items;
+        }
         public IEnumerable<IceCreamOrderListItem> GetIceCreamOrders()
         {
             using (var ctx = new ApplicationDbContext())
@@ -56,33 +117,6 @@ namespace IceCreamShop.Services
                     new IceCreamOrderDetails()
                     {
                         IceCreamOrderId = entity.IceCreamOrderId,
-
-                       // Customer = entity.Customer.Select(e => new Customer()
-                    //    {
-                    //        IceCreamOrderId = entity.IceCreamOrderId,
-                    //        CustomerId = e.CustomerId,
-                    //        CustomerGuid = e.CustomerGuid,
-                    //        CustomerName = e.CustomerName,
-                    //        Payment = e.Payment,
-                    //    }).ToList(),
-
-
-                    //    Toppings = entity.Toppings.Select(e => new Topping()
-                    //    {
-                    //        IceCreamOrderId = entity.IceCreamOrderId,
-                    //        ToppingsId = e.ToppingsId,
-                    //        ToppingName = e.ToppingName,
-                    //        Price = e.Price,
-
-                    //    }).ToList(),
-
-                    //    Flavor = entity.Flavor.Select(e => new Flavor()
-                    //    {
-                    //        IceCreamOrderId = entity.IceCreamOrderId,
-                    //        FlavorName = e.FlavorName,
-                    //        FlavorId = e.FlavorId,
-                    //        Price = e.Price
-                    //    }).ToList()
                     };
             }
         }

@@ -15,16 +15,31 @@ namespace IceCreamShop.WebMVC.Controllers
         // GET: IceCreamOrder
         public ActionResult Index()
         {
-            var service = CreateIceCreamOrderService();
-            var model = service.GetIceCreamOrders();
-
-            return View(model);
+            var orders = CreateShopService().GetOrders();
+            ViewBag.Orders = orders;
+            return View();
+        }
+        private ShopService CreateShopService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ShopService(userId);
+            return service;
         }
 
-        public ActionResult Create()
+        public ActionResult Create(int id =0)
         {
+            if (id==0)
+            {
+                return Content("ID missing");
+            }
             ViewBag.Title = "New Order";
-            return View();
+            var service = CreateIceCreamOrderService();
+            ViewBag.flavors = service.GetFlavors();
+            ViewBag.toppings = service.GetToppings();
+            IceCreamOrderCreate order = new IceCreamOrderCreate();
+            order.CustomerId = id;
+            var model = order;
+            return View(model);
         }
 
         [HttpPost]
@@ -56,7 +71,6 @@ namespace IceCreamShop.WebMVC.Controllers
             var order = CreateIceCreamOrderService().GetIceCreamOrderById(id);
             return View(new IceCreamOrderEdit
             {
-                // Need Order Here
             });
         }
 
@@ -74,7 +88,7 @@ namespace IceCreamShop.WebMVC.Controllers
 
             if (CreateIceCreamOrderService().UpdateIceCreamOrder(model))
             {
-                TempData["SaveResult"] = "Shop Updated";
+                TempData["SaveResult"] = "Order Updated";
                 return RedirectToAction("Index");
             }
 

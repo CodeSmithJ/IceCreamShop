@@ -37,9 +37,18 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) |
+            <a href="javascript:newOrder(@Html.Raw(item.CustomerId))">New Order</a>
         </td>
     </tr>
 }
 
 </table>
+@section scripts {
+    <script>
+        const id= @Html.Raw(Json.Encode(Model));
+        function newOrder(id) {
+            window.location.replace("/IceCreamOrder/Create/" + id);
+        }
+    </script>
+    }

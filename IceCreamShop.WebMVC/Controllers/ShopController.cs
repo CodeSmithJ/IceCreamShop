@@ -1,6 +1,7 @@
 ﻿using IceCreamShop.Models;
 using IceCreamShop.Models.Shop;
 using IceCreamShop.Services;
+
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace IceCreamShop.WebMVC.Controllers
         {
             var service = CreateShopService();
             var model = service.GetShops();
+   
 
             return View(model);
         }
@@ -46,9 +48,15 @@ namespace IceCreamShop.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int id=0)
         {
+            if (id == 0)
+            {
+                return Content("<h1>ID missing </h1>");
+            }
             var shop = CreateShopService().GetShopById(id);
+            var orders = CreateShopService().GetOrders();
+            ViewBag.Orders = orders;
             return View(shop);
         }
 
@@ -60,12 +68,9 @@ namespace IceCreamShop.WebMVC.Controllers
             }
 
             var shop = CreateShopService().GetShopById(id);
-            // Customers
-            // Toppings
-            // Flavors
             var dateTime = shop.CreatedUtc;
-            // return View(shop);
-            // ViewBag['orders'] = Services.getOrders(id);
+            var orders = CreateShopService().GetOrders();
+            ViewBag.Orders = orders;
             return View(new ShopEdit
             {
                 ShopId = shop.ShopId,
@@ -74,6 +79,8 @@ namespace IceCreamShop.WebMVC.Controllers
                 ModifiedUtc = shop.ModifiedUtc,
                 TotalPrice = shop.TotalPrice
             });
+
+
 
         }
 
@@ -99,14 +106,17 @@ namespace IceCreamShop.WebMVC.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        [ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id=0)
         {
+            if (id == 0)
+            {
+                return Content("<h1>ID missing </h1>");
+            }
             var service = CreateShopService();
-            service.DeleteShop(id);
-            TempData["SaveResult"] = "Your Shop Is Deleted";
+            if (service.DeleteShop(id))
+                TempData["SaveResult"] = "Your Shop Is Deleted";
+            else
+                TempData["SaveResult"] = "Your Shop WAS NOT Deleted";
 
             return RedirectToAction("Index");
         }
@@ -117,5 +127,6 @@ namespace IceCreamShop.WebMVC.Controllers
             var service = new ShopService(userId);
             return service;
         }
+
     }
 }
