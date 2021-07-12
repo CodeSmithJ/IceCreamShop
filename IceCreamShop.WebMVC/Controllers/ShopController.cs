@@ -48,7 +48,7 @@ namespace IceCreamShop.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Details(int id=0)
+        public ActionResult Details(int id = 0)
         {
             if (id == 0)
             {
@@ -106,7 +106,7 @@ namespace IceCreamShop.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Delete(int id=0)
+        public ActionResult Delete(int id = 0)
         {
             if (id == 0)
             {

@@ -62,7 +62,7 @@ namespace IceCreamShop.WebMVC.Controllers
             });
         }
 
-        [HttpPut]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, ToppingEdit model)
         {
@@ -84,12 +84,17 @@ namespace IceCreamShop.WebMVC.Controllers
             return View(model);
         }
 
-        [HttpDelete]
-        public ActionResult Delete(int toppingId)
+        public ActionResult Delete(int id = 0)
         {
+            if (id == 0)
+            {
+                return Content("<h1>ID missing </h1>");
+            }
             var service = CreateToppingService();
-            service.DeleteTopping(toppingId);
-            TempData["SaveResult"] = "Your Topping Is Deleted";
+            if (service.DeleteTopping(id))
+                TempData["SaveResult"] = "Your Topping Is Deleted";
+            else
+                TempData["SaveResult"] = "Your Topping WAS NOT Deleted";
 
             return RedirectToAction("Index");
         }

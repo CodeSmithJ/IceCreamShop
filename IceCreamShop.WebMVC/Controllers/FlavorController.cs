@@ -84,14 +84,17 @@ namespace IceCreamShop.WebMVC.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        [ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id = 0)
         {
+            if (id == 0)
+            {
+                return Content("<h1>ID missing </h1>");
+            }
             var service = CreateFlavorService();
-            service.DeleteFlavor(id);
-            TempData["SaveResult"] = "Your Flavor Is Deleted";
+            if (service.DeleteFlavor(id))
+                TempData["SaveResult"] = "Your Flavor Is Deleted";
+            else
+                TempData["SaveResult"] = "Your Flavor WAS NOT Deleted";
 
             return RedirectToAction("Index");
         }
