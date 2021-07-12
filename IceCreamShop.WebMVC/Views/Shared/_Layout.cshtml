@@ -17,11 +17,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("IceCreamOrders", "Index", "IceCreamOrder")</li>
+                    <li>@Html.ActionLink("ViewOrders", "Index", "IceCreamOrder")</li>
                     <li>@Html.ActionLink("Shops", "Index", "Shop")</li>                  
                     <li>@Html.ActionLink("Flavors", "Index", "Flavor")</li>
                     <li>@Html.ActionLink("Toppings", "Index", "Topping")</li>
