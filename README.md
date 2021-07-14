@@ -26,11 +26,11 @@
 
 ## Outside References
 
-[Google Docs](https://docs.google.com/document/d/1zd6_9nPKxIj2FIwlBIFNSpW2YPq6NFcbMPGbyKLjOoo/edit) was used as the text file.  It holds User Stories, Endpoints, Schedule, Trello Link, Features/Stretch Goals, Table Diagram, and the mission statement.
+[Google Docs](https://docs.google.com/document/d/14HH4RRJDUCANN6KCo4n10R01qpHJd6R2HABOJ9pGq54) was used as the text file.  It holds User Stories, Endpoints, Schedule, Trello Link, Features/Stretch Goals, Table Diagram, and the mission statement.
 
 <br>
 
-We used [Trello](https://trello.com/b/wPF8uvyh/bfg-coffee-final-project) to build out a board that easily allowed me to see what has been completed and what ticket tests I have yet to run.
+We used [Trello](https://trello.com/b/n9QORwQ8/jascoops) to build out a board that easily allowed me to see what has been completed and what ticket tests I have yet to run.
 
 <br>
 
