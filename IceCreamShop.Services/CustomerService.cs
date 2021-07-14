@@ -52,7 +52,7 @@ namespace IceCreamShop.Services
                 return query.ToArray();
             }
         }
-        public CustomerDetails GetCustomerById(int id = 0)
+        public CustomerDetails GetCustomerById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {

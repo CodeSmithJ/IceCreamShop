@@ -13,23 +13,23 @@
    
 </div>
 <div>
-    <table border="1">
+    <table border="1" align="center" cellspacing="50">
         <tr><th>Flavor Name</th><th>Flavor Price</th><th>Topping Name</th><th>Topping Price</th><th>Total Price</th><th>Customer Name</th></tr>
         @foreach (var order in orders)
         {
 
             <tr>
-                <td>@order.FlavorName  </td>
-                <td  align="right">@order.FlavorPriceC2()  </td>
-                <td>@order.ToppingName  </td>
-                <td  align="right">@order.ToppingPriceC2()  </td>
-                <td align="right">@order.PriceC2()  </td>
-                <td>@order.CustomerName  </td>
+                <td align="center">@order.FlavorName  </td>
+                <td  align="center">@order.FlavorPriceC2()  </td>
+                <td align="center">@order.ToppingName  </td>
+                <td  align="center">@order.ToppingPriceC2()  </td>
+                <td align="center">@order.PriceC2()  </td>
+                <td align="center">@order.CustomerName  </td>
             </tr>
         }
     </table>
 </div>
 <p>
 
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Thank you for your order!", "../")
 </p>
