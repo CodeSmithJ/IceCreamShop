@@ -6,13 +6,13 @@
     IEnumerable<IceCreamShop.Models.OrderView.OrderView> orders = (IEnumerable<IceCreamShop.Models.OrderView.OrderView>)ViewBag.Orders;
 }
 
-<h2>Edit</h2>
+<h2>Shop Edit</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>ShopEdit</h4>
         <hr />
@@ -65,22 +65,6 @@
         </div>
     </div>
 }
-<div>
-    <table border="1">
-        <tr><th>Flavor Name</th><th>Flavor Price</th><th>Topping Name</th><th>Topping Price</th><th>Total Price</th><th>Customer Name</th></tr>
-    @foreach(var order in orders) { 
-                
-    <tr>
-        <td>@order.FlavorName  </td>
-        <td align="right">@order.FlavorPriceC2()  </td>
-        <td>@order.ToppingName  </td>
-        <td align="right">@order.ToppingPriceC2()  </td>
-        <td align="right">@order.PriceC2()  </td>
-        <td>@order.CustomerName  </td>
-    </tr>
-            }
-        </table>
-</div>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

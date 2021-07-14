@@ -45,13 +45,13 @@ namespace IceCreamShop.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int id = 0)
         {
             var customer = CreateCustomerService().GetCustomerById(id);
             return View(customer);
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id = 0)
         {
             var customer = CreateCustomerService().GetCustomerById(id);
             return View(new CustomerEdit
@@ -62,10 +62,15 @@ namespace IceCreamShop.WebMVC.Controllers
             });
         }
 
-        [HttpPut]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, CustomerEdit model)
         {
+            if (id == 0)
+            {
+                return Content("<h1>Enter Customer ID In AddressBar To Confirm Edit... /Customer/Edit/ # <== </h1>");
+            }
+
             if (!ModelState.IsValid) return View(model);
 
             if (model.CustomerId != id)
@@ -88,7 +93,7 @@ namespace IceCreamShop.WebMVC.Controllers
         {
             if (id == 0)
             {
-                return Content("<h1>ID missing </h1>");
+                return Content("<h1>Enter Customer ID In AddressBar To Confirm Delete... /Customer/Delete/ # <== </h1>");
             }
             var service = CreateCustomerService();
             if (service.DeleteCustomer(id))

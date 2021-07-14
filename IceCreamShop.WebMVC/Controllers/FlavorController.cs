@@ -51,7 +51,7 @@ namespace IceCreamShop.WebMVC.Controllers
             return View(flavor);
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id = 0)
         {
             var flavor = CreateFlavorService().GetFlavorById(id);
             return View(new FlavorEdit
@@ -62,7 +62,7 @@ namespace IceCreamShop.WebMVC.Controllers
             });
         }
 
-        [HttpPut]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, FlavorEdit model)
         {

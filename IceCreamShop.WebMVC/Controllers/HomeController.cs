@@ -10,7 +10,6 @@ namespace IceCreamShop.WebMVC.Controllers
     {
         public ActionResult Index()
         {
-           // return Redirect("/IceCreamOrder");
             return View();
         }
 
