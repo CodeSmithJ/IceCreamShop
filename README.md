@@ -10,6 +10,8 @@
 
 1. The web application was built in VS Community ----- Download [VS Community](https://visualstudio.microsoft.com/downloads/).
 
+2. The web application used Microsoft SQL Server Management Studio 18 was also used.
+
 <br>
 
 </hr>
